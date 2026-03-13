@@ -22,6 +22,7 @@ public class Dev {
         }
     }
 
+
     public double calcularTotalXp() {
         Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
         double soma = 0;
@@ -36,6 +37,23 @@ public class Dev {
                 .mapToDouble(Conteudo::calcularXp)
                 .sum();*/
     }
+
+    public Conteudo verProximoConteudo() {
+    return this.conteudosInscritos.stream().findFirst().orElse(null);
+    }
+    
+    public long contarCursosConcluidos() {
+        return this.conteudosConcluidos.stream()
+                .filter(c -> c instanceof Curso)
+                .count();
+    }
+
+    public long contarMentoriasConcluidas() {
+        return this.conteudosConcluidos.stream()
+                .filter(c -> c instanceof Mentoria)
+                .count();
+    }
+
 
 
     public String getNome() {
